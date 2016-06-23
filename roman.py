@@ -1,26 +1,31 @@
 # coding: utf-8
 from sys import argv
 
-romanTable = {
-    'I': 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-}
+romanTable = [
+    ('M', 1000),
+    ('D', 500),
+    ('C', 100),
+    ('L', 50),
+    ('X', 10),
+    ('V', 5),
+    ('I', 1)
+];
 
 def convertToRoman(arabic):
     roman = ''
 
-    for w in reversed(sorted(romanTable.keys())):
-        print(w)
-        while arabic >= romanTable[w]:
-            roman += w
-            arabic = arabic - romanTable[w]
+    for pair in romanTable:
+        numeral, value = pair
+        while arabic >= value:
+            roman += numeral
+            arabic = arabic - value
 
 
-    roman += arabic * 'I'
     roman = roman.replace('VIIII','IX')
     roman = roman.replace('IIII','IV')
+    roman = roman.replace('LXXXX', 'XC')
+    roman = roman.replace('XXXX', 'XL')
+
 #    roman = roman.replace('IVI','V')
     return roman
 
@@ -53,7 +58,32 @@ def testConvertToRoman():
     38: 'XXXVIII',
     39: 'XXXIX',
     40: 'XL',
-    41: 'XLI'
+    41: 'XLI',
+    47: 'XLVII',
+    49: 'XLIX',
+    50: 'L',
+    51: 'LI',
+    52: 'LII',
+    59: 'LIX',
+    60: 'LX',
+    61: 'LXI',
+    80: 'LXXX',
+    81: 'LXXXI',
+    83: 'LXXXIII',
+    89: 'LXXXIX',
+    90: 'XC',
+    91: 'XCI',
+    92: 'XCII',
+    95: 'XCV',
+    97: 'XCVII',
+    98: 'XCVIII',
+    99: 'XCIX',
+    100: 'C',
+    101: 'CI',
+    157: 'CLVII',
+    179: 'CLXXIX',
+
+    498: 'CDXCVIII'
     }
 
     for arabic, roman in testCases.iteritems():
