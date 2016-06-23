@@ -53,8 +53,9 @@ def testConvertToArabic():
         if testCases[case] != convertToArabic(case):
             raise Exception('convertToArabic(%d) gave %s, expected %s' % (case, convertToArabic(case), testCases[case]))
 
-if argv[1] == '--test':
-    testConvertToRoman()
-    testConvertToArabic()
-else:
-    print(convertToRoman(int(argv[2])))
+if __name__ == '__main__':
+    if argv[1] == '--test':
+        testConvertToRoman()
+        testConvertToArabic()
+    else:
+        print(convertToRoman(int(argv[2])))
