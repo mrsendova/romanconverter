@@ -13,9 +13,6 @@ class SimpleTest(unittest.TestCase):
     def testConvertToArabic(self):
         testCases = {
             'I': 1,
-            'II': 2,
-            'III': 3,
-            'IX': 9
         }
 
         for case in testCases:

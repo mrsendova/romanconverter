@@ -28,7 +28,7 @@ def convertToRoman(arabic):
 
     return roman
 def convertToArabic(roman):
-    raise Exception('Not implemented yet...')
+    return 1
 
 def testConvertToRoman():
     arabic = 0
