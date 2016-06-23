@@ -11,13 +11,11 @@ romanTable = {
 def convertToRoman(arabic):
     roman = ''
 
-    while arabic >= romanTable['X']:
-        roman += 'X'
-        arabic = arabic - romanTable['X']
-
-    while arabic >= romanTable['V']:
-        roman += 'V'
-        arabic = arabic - romanTable['V']
+    for w in reversed(sorted(romanTable.keys())):
+        print(w)
+        while arabic >= romanTable[w]:
+            roman += w
+            arabic = arabic - romanTable[w]
 
 
     roman += arabic * 'I'
