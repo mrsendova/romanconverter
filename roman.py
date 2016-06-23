@@ -7,13 +7,22 @@ romanTable = {
     'X': 10,
 }
 
-
 def convertToRoman(arabic):
-    roman = arabic * 'I'
-    if arabic >= 5:
-        roman = 'V' + (arabic - romanTable['V']) * 'I'
+    roman = ''
 
+    if arabic >= romanTable['X']:
+        roman += 'X'
+        arabic = arabic - romanTable['X']
+
+    elif arabic >= romanTable['V']:
+        roman += 'V'
+        arabic = arabic - romanTable['V']
+
+
+    roman += arabic * 'I'
     roman = roman.replace('IIII','IV')
+    roman = roman.replace('VIV','IX')
+    roman = roman.replace('IVI','V')
     return roman
 
 def testConvertToRoman():
@@ -30,7 +39,14 @@ def testConvertToRoman():
     10: 'X',
     11: 'XI',
     12: 'XII',
-    13: 'XII'
+    13: 'XIII',
+    14: 'XIV',
+    15: 'XV',
+    16: 'XVI',
+    17: 'XVII',
+    18: 'XVIII',
+    19: 'XIX',
+    20: 'XX'
     }
     for arabic, roman in testCases.iteritems():
         if convertToRoman(arabic) != roman:
