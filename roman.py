@@ -20,12 +20,11 @@ def convertToRoman(arabic):
             roman += numeral
             arabic = arabic - value
 
-    roman = roman.replace('VIIII','IX')
-    roman = roman.replace('IIII','IV')
-    roman = roman.replace('LXXXX', 'XC')
-    roman = roman.replace('XXXX', 'XL')
-    roman = roman.replace('DCCCC', 'CM')
-    roman = roman.replace('CCCC', 'CD')
+    patterns = ['VIX', 'LXC', 'DCM']
+
+    for pattern in patterns:
+        roman = roman.replace(pattern[0] + pattern[1] * 4,pattern[1] + pattern[2])
+        roman = roman.replace(pattern[1] * 4, pattern[1] + pattern[0])
 
     return roman
 
