@@ -27,6 +27,8 @@ def convertToRoman(arabic):
         roman = roman.replace(pattern[1] * 4, pattern[1] + pattern[0])
 
     return roman
+def convertToArabic(roman):
+    raise Exception('Not implemented yet...')
 
 def testConvertToRoman():
     arabic = 0
@@ -39,7 +41,20 @@ def testConvertToRoman():
 
         print('All tests passed.')
 
+def testConvertToArabic():
+    testCases = {
+        'I': 1,
+        'II': 2,
+        'III': 3,
+        'IX': 9
+    }
+
+    for case in testCases:
+        if testCases[case] != convertToArabic(case):
+            raise Exception('convertToArabic(%d) gave %s, expected %s' % (case, convertToArabic(case), testCases[case]))
+
 if argv[1] == '--test':
     testConvertToRoman()
+    testConvertToArabic()
 else:
     print(convertToRoman(int(argv[2])))
